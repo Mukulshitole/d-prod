@@ -183,7 +183,23 @@ async function storeClerkInfo(
 // Scrape website content
 async function scrapeWebsiteContent(url: string): Promise<string> {
     console.log(`Scraping website content from URL: ${url}`);
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-infobars",
+            "--window-position=0,0",
+            "--ignore-certifcate-errors",
+            "--ignore-certifcate-errors-spki-list",
+            "--disable-blink-features=AutomationControlled",
+            "--disable-web-security",
+            "--start-maximized",
+            "--disable-features=IsolateOrigins,site-per-process",
+            "--disable-gpu",
+        ],
+        timeout: 60000,
+    });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle2' });
 

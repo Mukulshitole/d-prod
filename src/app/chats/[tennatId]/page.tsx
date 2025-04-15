@@ -8,7 +8,7 @@ export default function ChatPage() {
   console.log("Pathname:", pathname); // Debugging
 
   // Extract tenantId from the path (e.g., /chats/666 => 666)
-  const tenantId = pathname?.split("/")[2]; // Adjust the index based on your URL structure
+  const tenantId = pathname?.split("/")[5]; // Adjust the index based on your URL structure
   console.log("Tenant ID in page.tsx:", tenantId); // Debugging
 
   if (!tenantId) {

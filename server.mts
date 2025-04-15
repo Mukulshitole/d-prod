@@ -193,6 +193,10 @@ app.prepare().then(() => {
     });
   });
 
+  io.on("connection", (socket) => {
+    console.log(`[${new Date().toISOString()}] Socket connection established - ID: ${socket.id} | IP: ${socket.handshake.address} | User Agent: ${socket.handshake.headers['user-agent']}`);
+  });
+
   // Handle Redis messages for real-time communication
   sub.on("message", async (channel, message) => {
     if (channel === "chat-messages") {

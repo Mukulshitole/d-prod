@@ -49,6 +49,8 @@ const nextConfig: NextConfig = {
         "@prisma/client",
         "sharp",
         "onnxruntime-node", // Exclude onnxruntime-node from bundling
+        "puppeteer", // Add puppeteer to externals
+        "puppeteer-core", // Add puppeteer-core to externals
       ];
     } else {
       // Exclude Node.js-specific modules from the client-side bundle

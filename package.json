@@ -11,7 +11,7 @@
     "start:socket":"NODE_ENV=production node dist/server.mjs",
     "lint": "next lint",
     "postinstall": "prisma generate --schema=./prisma/schema1.prisma && prisma generate --schema=./prisma/schema2.prisma",
-    "vercel-build": "prisma generate --schema=./prisma/schema1.prisma && prisma generate --schema=./prisma/schema2.prisma && next build"
+    "vercel-build": "prisma generate --schema=./prisma/schema1.prisma && prisma generate --schema=./prisma/schema2.prisma && npx puppeteer browsers install chrome && next build && tsc --project tsconfig.server.json"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.750.0",

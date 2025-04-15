@@ -3,7 +3,7 @@
 "compilerOptions": { 
 "module": "CommonJS",
 "target": "ES2017", 
-"outDir": "./dist", 
+"outDir": "./", 
 "moduleResolution": "Node", 
 "strict": true, 
 "noEmit": false, 

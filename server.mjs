@@ -103,7 +103,12 @@ app.prepare().then(() => {
         cors: {
             origin: "*",
             methods: ["GET", "POST"],
+            credentials: true
         },
+        transports: ['websocket', 'polling'], // Move this to top level
+        allowEIO3: true,
+        pingTimeout: 60000,
+        pingInterval: 25000
     });
     io.on("connection", (socket) => {
         console.log(`User connected: ${socket.id}`);
@@ -137,6 +142,9 @@ app.prepare().then(() => {
         socket.on("disconnect", () => {
             console.log(`User disconnected: ${socket.id}`);
         });
+    });
+    io.on("connection", (socket) => {
+        console.log(`[${new Date().toISOString()}] Socket connection established - ID: ${socket.id} | IP: ${socket.handshake.address} | User Agent: ${socket.handshake.headers['user-agent']}`);
     });
     // Handle Redis messages for real-time communication
     sub.on("message", async (channel, message) => {

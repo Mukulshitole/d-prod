@@ -150,7 +150,12 @@ app.prepare().then(() => {
     cors: {
       origin: "*",
       methods: ["GET", "POST"],
+      credentials: true
     },
+    transports: ['websocket', 'polling'], // Move this to top level
+    allowEIO3: true,
+    pingTimeout: 60000,
+    pingInterval: 25000
   });
 
   io.on("connection", (socket) => {
